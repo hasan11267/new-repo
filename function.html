@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr ;
+            justify-content: space-evenly;
+            gap: 20px;
+        }
+        .box{
+            background-color:greenyellow ;
+            border: black solid ;
+            width: 100px;
+            height: 100px;
+            
+        }
+    </style>
+</head>
+<body>
+   <div class="calc">
+    <input type="">
+
+    <button id="7">7</button>
+    <button id="8">8</button>
+    <button id="9">9</button>
+    <button id="4">4</button>
+    <button id="5">5</button>
+    <button id="6">6</button>
+    <button id="1">1</button>
+    <button id="2">2</button>
+    <button id="3">3</button>
+    <button id="0">0</button>
+
+
+
+    <button id="divide">/</button>
+    <button id="multiply">*</button>
+    <button id="subtract">-</button>
+    <button id="sum">+</button>
+
+   </div>
+</body>
+</html>
+<script>
+let input1=prompt("enter first Input")
+let input2=parseInt(prompt("enter second Input"))
+function data(input1,input2) {
+        document.write( `my name is ${input1} <br> my age is ${input2}`)
+        
+    }
+
+
+function multiply(a,b){
+    let c = a*b;
+    document.write(c)
+}
+
+function divide(a,b){
+    let c = a/b;
+    document.write(c)
+}
+
+function sum(a,b){
+    let c = a+b;
+    document.write(c)
+}
+
+function subtract(a,b){
+    let c = a-b;
+    document.write(c)
+}
+data(input1,input2)
+</script>

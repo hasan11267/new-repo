@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">`r`n  <meta name="theme-color" content="#2e7d32">`r`n  <link rel="manifest" href="manifest.json">
+  <meta name="description" content="Green Basket Market - FreshFind farmers market schedule, address, produce and location.">
+  <title>Green Basket Market | FreshFind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html#home" aria-label="FreshFind home">
+      <img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img">
+      <span>Fresh<span>Find</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    <nav id="mainNav">
+      <div class="dropdown" id="homeDropdown">
+        <a href="index.html#home" class="nav-link dropdown-toggle" id="homeDropdownBtn" aria-expanded="false" role="button">
+          <span>Home</span>
+          <span class="dropdown-caret">▾</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="homeDropdownBtn">
+          <div class="dropdown-heading">Explore FreshFind</div>
+          <a href="index.html#map-section" class="dropdown-item">
+            <span class="dropdown-icon">🗺️</span>
+            <div class="dropdown-text">
+              <strong>Map</strong>
+              <span>Interactive market map & locations</span>
+            </div>
+          </a>
+          <a href="index.html#produce" class="dropdown-item">
+            <span class="dropdown-icon">🥦</span>
+            <div class="dropdown-text">
+              <strong>Produce Guide</strong>
+              <span>Seasonal fruits & vegetables</span>
+            </div>
+          </a>
+          <a href="index.html#markets" class="dropdown-item">
+            <span class="dropdown-icon">🏪</span>
+            <div class="dropdown-text">
+              <strong>Market Directory</strong>
+              <span>Browse all local farmers markets</span>
+            </div>
+          </a>
+          <a href="contact.html" class="dropdown-item">
+            <span class="dropdown-icon">📞</span>
+            <div class="dropdown-text">
+              <strong>Contact Us</strong>
+              <span>Get in touch & send inquiries</span>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#home" class="dropdown-item">
+            <span class="dropdown-icon">🏠</span>
+            <div class="dropdown-text">
+              <strong>Home Overview</strong>
+              <span>Return to top of home</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a href="markets.html" class="nav-link active">Markets</a>
+      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="about.html" class="nav-link">About</a>
+      <button class="btn btn-small" id="loginBtn">Login</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="detail-banner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <a href="markets.html">Market Page</a> <span>/</span> <span>Green Basket Market</span>
+      </div>
+
+      <div class="detail-header-card">
+        <div class="detail-header-icon"><img src="images/market-1.jpg" alt="Green Basket Market"></div>
+        <div class="detail-header-info">
+          <div class="eyebrow">VERIFIED FARMERS MARKET</div>
+          <h1>Green Basket Market</h1>
+          <div class="detail-meta-row">
+            <span>📍 <strong>Clifton</strong></span>
+            <span>•</span>
+            <span>🕒 <strong>09:00 - 18:00</strong></span>
+            <span>•</span>
+            <span>📅 <strong>Monday, Wednesday, Friday, Saturday</strong></span>
+          </div>
+
+          <div class="detail-badges">
+            <span class="badge-pill open" id="detailStatusPill">● OPEN TODAY</span>
+            <span class="badge-pill rating">⭐ 4.9 Community Rating</span>
+            <span class="badge-pill vendors">👩‍🌾 18+ Local Stalls</span>
+          </div>
+
+          <div class="detail-actions">
+            <button class="btn btn-small" id="saveFavBtn" onclick="toggleThisFav(1)">☆ Save to Favorites</button>
+            <a href="#marketLocation" class="btn btn-small btn-outline">📍 View On Map</a>
+            <a href="markets.html" class="btn btn-small btn-outline">← All Markets</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:40px;">
+      <div class="detail-layout">
+        <!-- Main Column -->
+        <div>
+          <!-- About Card -->
+          <div class="detail-card">
+            <h2>About This Market</h2>
+            <p style="font-size:1.02rem; line-height:1.7; color:#324d38;">
+              Green Basket Market in Clifton is a premier local food destination offering farm-fresh harvests four days a week. With certified organic growers, farm-picked greens, crisp seasonal fruits, and local dairy, it provides healthy, chemical-free produce straight from growers to your family.
+            </p>
+          </div>
+
+          <!-- Produce Card -->
+          <div class="detail-card">
+            <h2>Fresh Produce & Farm Goods</h2>
+            <p style="margin-bottom:18px;">Typically available directly from local growers at this market:</p>
+            <div class="product-tags" style="gap:10px;">
+              <span class="tag" style="font-size:0.86rem; padding:8px 14px; background:#e8f5e9; color:#1b5e20; font-weight:600; border-radius:10px;">🌿 Mangoes</span>
+<span class="tag" style="font-size:0.86rem; padding:8px 14px; background:#e8f5e9; color:#1b5e20; font-weight:600; border-radius:10px;">🌿 Tomatoes</span>
+<span class="tag" style="font-size:0.86rem; padding:8px 14px; background:#e8f5e9; color:#1b5e20; font-weight:600; border-radius:10px;">🌿 Spinach</span>
+<span class="tag" style="font-size:0.86rem; padding:8px 14px; background:#e8f5e9; color:#1b5e20; font-weight:600; border-radius:10px;">🌿 Lettuce</span>
+<span class="tag" style="font-size:0.86rem; padding:8px 14px; background:#e8f5e9; color:#1b5e20; font-weight:600; border-radius:10px;">🌿 Organic Honey</span>
+<span class="tag" style="font-size:0.86rem; padding:8px 14px; background:#e8f5e9; color:#1b5e20; font-weight:600; border-radius:10px;">🌿 Farm Eggs</span>
+
+            </div>
+          </div>
+
+          <!-- Schedule Card -->
+          <div class="detail-card">
+            <h2>Weekly Operating Schedule</h2>
+            <p style="margin-bottom:14px;">Real-time schedule for each day of the week. Today is highlighted below:</p>
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Hours</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="scheduleTableBody">
+                <tr data-day="Monday"><td><strong>Monday</strong></td><td>09:00 - 18:00</td><td><span class="status-chip open">Open</span></td></tr>
+<tr data-day="Tuesday"><td><strong>Tuesday</strong></td><td>Closed</td><td><span class="status-chip closed">Closed</span></td></tr>
+<tr data-day="Wednesday"><td><strong>Wednesday</strong></td><td>09:00 - 18:00</td><td><span class="status-chip open">Open</span></td></tr>
+<tr data-day="Thursday"><td><strong>Thursday</strong></td><td>Closed</td><td><span class="status-chip closed">Closed</span></td></tr>
+<tr data-day="Friday"><td><strong>Friday</strong></td><td>09:00 - 18:00</td><td><span class="status-chip open">Open</span></td></tr>
+<tr data-day="Saturday"><td><strong>Saturday</strong></td><td>09:00 - 18:00</td><td><span class="status-chip open">Open</span></td></tr>
+<tr data-day="Sunday"><td><strong>Sunday</strong></td><td>Closed</td><td><span class="status-chip closed">Closed</span></td></tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Features & Amenities -->
+          <div class="detail-card">
+            <h2>Market Amenities & Highlights</h2>
+            <div class="amenity-grid">
+              <div class="amenity-item"><span style="color:#2e7d32; font-weight:bold; font-size:1.1rem;">✓</span><span>Certified Organic Produce</span></div>
+<div class="amenity-item"><span style="color:#2e7d32; font-weight:bold; font-size:1.1rem;">✓</span><span>Fresh Morning Harvest</span></div>
+<div class="amenity-item"><span style="color:#2e7d32; font-weight:bold; font-size:1.1rem;">✓</span><span>Free Dedicated Parking</span></div>
+<div class="amenity-item"><span style="color:#2e7d32; font-weight:bold; font-size:1.1rem;">✓</span><span>Digital & Card Payments</span></div>
+<div class="amenity-item"><span style="color:#2e7d32; font-weight:bold; font-size:1.1rem;">✓</span><span>Wheelchair Accessible</span></div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div>
+          <!-- Quick Info Card -->
+          <div class="detail-card">
+            <h3>Quick Information</h3>
+            <div class="info-list">
+              <div class="info-item">
+                <span class="info-icon">📍</span>
+                <div>
+                  <strong>Address</strong>
+                  <span>Block 4, Marine Promenade, Clifton, Karachi</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">🕒</span>
+                <div>
+                  <strong>Operating Time</strong>
+                  <span>09:00 - 18:00</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">📅</span>
+                <div>
+                  <strong>Active Days</strong>
+                  <span>Monday, Wednesday, Friday, Saturday</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">📞</span>
+                <div>
+                  <strong>Contact Phone</strong>
+                  <span>+92 300 1122334</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">✉️</span>
+                <div>
+                  <strong>Inquiry Email</strong>
+                  <span>clifton@greenbasket.example</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map Card -->
+          <div class="detail-card" id="marketLocation">
+            <h3>Market Location Map</h3>
+            <p style="font-size:0.86rem; color:#5b7762; margin-bottom:10px;">Exact location pinned below with OpenStreetMap & Leaflet:</p>
+            <div id="detailMap" class="detail-map-card"></div>
+            <div style="margin-top:14px; display:flex; gap:10px;">
+              <button class="btn btn-small btn-outline" style="width:100%;" id="centerMapBtn">🧭 Center Map on Market</button>
+            </div>
+          </div>
+
+          <!-- Visitor Tips -->
+          <div class="detail-card" style="background:#f4faf5; border-color:#d5e8d8;">
+            <h3 style="color:#1b5e20;">💡 Tips for Visiting</h3>
+            <ul style="padding-left:20px; font-size:0.9rem; color:#3a5c43; line-height:1.6; margin:10px 0 0;">
+              <li>Arrive early in the morning for the freshest leafy greens and seasonal fruits.</li>
+              <li>Bring reusable tote bags to support zero-waste shopping.</li>
+              <li>Ask growers directly about cooking and storage recommendations!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Markets Section -->
+    <section class="section" style="background:#ffffff; border-top:1px solid #e1eee2;">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">EXPLORE MORE</div>
+          <h2>Other Neighborhood Markets</h2>
+          <p>Discover fresh seasonal hubs in other areas of Karachi.</p>
+        </div>
+        <a href="markets.html" class="btn btn-outline">View All Markets</a>
+      </div>
+
+      <div class="market-grid">
+        <article class="market-card">
+          <div class="market-icon"><img src="images/market-2.jpg" alt="Fresh Farm Shop" loading="lazy"></div>
+          <div class="eyebrow">MARKET</div>
+          <h3>Fresh Farm Shop</h3>
+          <div class="market-meta">📍 DHA • 🕒 08:00 - 17:00</div>
+          <p>Local farm produce delivered fresh every morning.</p>
+          <div class="product-tags">
+            <span class="tag">Apples</span><span class="tag">Potatoes</span><span class="tag">Carrots</span><span class="tag">Herbs</span>
+          </div>
+          <div class="card-actions">
+            <a href="market-2.html" class="btn primary" style="width:100%; text-align:center;">View Details</a>
+          </div>
+        </article><article class="market-card">
+          <div class="market-icon"><img src="images/market-3.jpg" alt="Karachi Fresh Market" loading="lazy"></div>
+          <div class="eyebrow">MARKET</div>
+          <h3>Karachi Fresh Market</h3>
+          <div class="market-meta">📍 Gulshan • 🕒 10:00 - 20:00</div>
+          <p>A neighborhood market with seasonal fruits and vegetables.</p>
+          <div class="product-tags">
+            <span class="tag">Mangoes</span><span class="tag">Bananas</span><span class="tag">Onions</span><span class="tag">Cucumbers</span>
+          </div>
+          <div class="card-actions">
+            <a href="market-3.html" class="btn primary" style="width:100%; text-align:center;">View Details</a>
+          </div>
+        </article><article class="market-card">
+          <div class="market-icon"><img src="images/market-4.jpg" alt="Organic Corner" loading="lazy"></div>
+          <div class="eyebrow">MARKET</div>
+          <h3>Organic Corner</h3>
+          <div class="market-meta">📍 PECHS • 🕒 09:00 - 19:00</div>
+          <p>Organic vegetables and locally grown seasonal produce.</p>
+          <div class="product-tags">
+            <span class="tag">Spinach</span><span class="tag">Broccoli</span><span class="tag">Lettuce</span><span class="tag">Herbs</span>
+          </div>
+          <div class="card-actions">
+            <a href="market-4.html" class="btn primary" style="width:100%; text-align:center;">View Details</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <button class="chat-launcher" id="chatLauncher" aria-label="Open FreshFind assistant">🤖</button>
+  <aside class="chatbot" id="chatbot" aria-label="FreshFind assistant">
+    <div class="chat-header">
+      <div><strong>FreshFind Assistant</strong><small>Offline FAQ assistant</small></div>
+      <button id="chatClose" aria-label="Close chat">×</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="bot-message">Hi! Need assistance with this market's timings, directions, or produce? Ask anytime.</div>
+    </div>
+    <div class="quick-replies">
+      <button data-question="Which markets are open today?">Open today</button>
+      <button data-question="Where can I find mangoes?">Mangoes</button>
+      <button data-question="How do I use the map?">Map help</button>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" placeholder="Ask a question..." autocomplete="off">
+      <button aria-label="Send">➤</button>
+    </form>
+  </aside>
+
+  <footer>
+    <div class="brand"><img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img"><span>Fresh<span>Find</span></span></div>
+    <div class="footer-links">
+      <a href="index.html#home">Home</a>
+      <a href="markets.html">Market Page</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year"></span> FreshFind • eGreen Basket</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+    const marketLat = 24.8138;
+    const marketLng = 67.0305;
+    const marketId = 1;
+    const marketDays = ["Monday", "Wednesday", "Friday", "Saturday"];
+    const marketTime = "09:00 - 18:00";
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('year')) {
+        document.getElementById('year').textContent = new Date().getFullYear();
+      }
+
+      // Mobile nav
+      const navToggle = document.getElementById('navToggle');
+      const mainNav = document.getElementById('mainNav');
+      if (navToggle && mainNav) {
+        navToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          mainNav.classList.toggle('mobile-open');
+        });
+      }
+
+      // Dropdown toggle
+      const dropdown = document.getElementById('homeDropdown');
+      const dropdownBtn = document.getElementById('homeDropdownBtn');
+      if (dropdown && dropdownBtn) {
+        dropdownBtn.addEventListener('click', (e) => {
+          if (window.innerWidth <= 900 || e.target.classList.contains('dropdown-caret')) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+          }
+        });
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+        });
+      }
+
+      // Live open status check
+      const now = new Date();
+      const currentDay = now.toLocaleDateString('en-US', { weekday: 'long' });
+      const [openT, closeT] = marketTime.split(' - ').map(t => t.split(':').map(Number));
+      const currentM = now.getHours() * 60 + now.getMinutes();
+      const isOpenNow = marketDays.includes(currentDay) && currentM >= (openT[0]*60 + openT[1]) && currentM <= (closeT[0]*60 + closeT[1]);
+      
+      const pill = document.getElementById('detailStatusPill');
+      if (pill) {
+        pill.className = `badge-pill ${isOpenNow ? 'open' : 'closed'}`;
+        pill.textContent = isOpenNow ? '● OPEN NOW' : '○ CLOSED NOW';
+      }
+
+      // Highlight today in schedule table
+      const rows = document.querySelectorAll('#scheduleTableBody tr');
+      rows.forEach(r => {
+        if (r.dataset.day === currentDay) {
+          r.classList.add('today-row');
+        }
+      });
+
+      // Favorite button
+      updateFavBtn();
+
+      // Leaflet Map
+      if (typeof L !== 'undefined' && document.getElementById('detailMap')) {
+        const map = L.map('detailMap').setView([marketLat, marketLng], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        const marker = L.marker([marketLat, marketLng]).addTo(map);
+        marker.bindPopup('<strong>Green Basket Market</strong><br>Block 4, Marine Promenade, Clifton, Karachi<br>🕒 09:00 - 18:00').openPopup();
+
+        const centerBtn = document.getElementById('centerMapBtn');
+        if (centerBtn) {
+          centerBtn.addEventListener('click', () => {
+            map.setView([marketLat, marketLng], 16);
+            marker.openPopup();
+          });
+        }
+      }
+    });
+
+    function toggleThisFav(id) {
+      let favs = JSON.parse(localStorage.getItem('freshfindFavorites') || '[]');
+      favs = favs.includes(id) ? favs.filter(x => x !== id) : [...favs, id];
+      localStorage.setItem('freshfindFavorites', JSON.stringify(favs));
+      updateFavBtn();
+    }
+
+    function updateFavBtn() {
+      const btn = document.getElementById('saveFavBtn');
+      if (!btn) return;
+      let favs = JSON.parse(localStorage.getItem('freshfindFavorites') || '[]');
+      btn.textContent = favs.includes(marketId) ? '★ Saved in Favorites' : '☆ Save to Favorites';
+      if (favs.includes(marketId)) {
+        btn.classList.add('primary');
+      } else {
+        btn.classList.remove('primary');
+      }
+    }
+  </script>
+  <script src="js/utils.js"></script>`r`n    <script src="js/chatbot.js"></script>
+</body>
+  <button id="backToTop" aria-label="Back to top">↑</button>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  </script>
+</body>
+</html>
+

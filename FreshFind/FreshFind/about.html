@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About FreshFind - Connecting communities with fresh, local farmers markets and sustainable seasonal produce.">
+  <meta name="theme-color" content="#2e7d32">
+  <title>About Us | FreshFind</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html#home" aria-label="FreshFind home">
+      <img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img">
+      <span>Fresh<span>Find</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    <nav id="mainNav">
+      <div class="dropdown" id="homeDropdown">
+        <a href="index.html#home" class="nav-link dropdown-toggle" id="homeDropdownBtn" aria-expanded="false" role="button">
+          <span>Home</span>
+          <span class="dropdown-caret">▾</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="homeDropdownBtn">
+          <div class="dropdown-heading">Explore FreshFind</div>
+          <a href="index.html#map-section" class="dropdown-item">
+            <span class="dropdown-icon">🗺️</span>
+            <div class="dropdown-text">
+              <strong>Map</strong>
+              <span>Interactive market map & locations</span>
+            </div>
+          </a>
+          <a href="index.html#produce" class="dropdown-item">
+            <span class="dropdown-icon">🥦</span>
+            <div class="dropdown-text">
+              <strong>Produce Guide</strong>
+              <span>Seasonal fruits & vegetables</span>
+            </div>
+          </a>
+          <a href="index.html#markets" class="dropdown-item">
+            <span class="dropdown-icon">🏪</span>
+            <div class="dropdown-text">
+              <strong>Market Directory</strong>
+              <span>Browse all local farmers markets</span>
+            </div>
+          </a>
+          <a href="contact.html" class="dropdown-item">
+            <span class="dropdown-icon">📞</span>
+            <div class="dropdown-text">
+              <strong>Contact Us</strong>
+              <span>Get in touch & send inquiries</span>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#home" class="dropdown-item">
+            <span class="dropdown-icon">🏠</span>
+            <div class="dropdown-text">
+              <strong>Home Overview</strong>
+              <span>Return to top of home</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a href="markets.html" class="nav-link">Markets</a>
+      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <button class="btn btn-small" id="loginBtn">Login</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="page-banner-content">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> <span>/</span> <span>About Us</span>
+        </div>
+        <div class="eyebrow">OUR MISSION & STORY</div>
+        <h1>Making Local Food Easier to Discover</h1>
+        <p>FreshFind is an eGreen Basket initiative dedicated to bridging neighborhood communities with regional growers, local farmers markets, and fresh seasonal harvest. We believe eating fresh, healthy food shouldn't be difficult or disconnected.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background:#fff;">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">PURPOSE & VISION</div>
+          <h2>What Drives FreshFind</h2>
+          <p>We are creating a sustainable bridge between urban consumers and local agriculture.</p>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Our Mission</h3>
+          <p>To empower local farmers by giving them greater visibility, while offering consumers accurate, real-time access to nearby markets, operating schedules, and harvest guides.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Our Vision</h3>
+          <p>A thriving, decentralized food network where seasonal eating is celebrated, food miles are significantly minimized, and community well-being is prioritized.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Community First</h3>
+          <p>Supporting independent farmers directly keeps agricultural traditions alive, ensures fair wages, and strengthens our local economic resilience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:#f4faf5;">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">THE BENEFITS</div>
+          <h2>Why Choose Local & Seasonal?</h2>
+          <p>Buying from local farmers markets transforms your nutrition, environment, and community.</p>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🥬</div>
+          <h3>Peak Freshness & Taste</h3>
+          <p>Produce picked at peak ripeness retains significantly more vitamins, antioxidants, and vibrant natural flavors than long-transported goods.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Reduced Food Miles</h3>
+          <p>Short transport distances mean substantially less fuel consumption, minimal plastic packaging, and reduced greenhouse gas emissions.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌱</div>
+          <h3>Seasonal Variety</h3>
+          <p>Eating with the natural seasons introduces biological diversity into your diet, synchronizing your nutrition with what the land naturally yields.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:#fff;">
+      <div class="story-split">
+        <div>
+          <div class="eyebrow">THE FRESHFIND JOURNEY</div>
+          <h2>The eGreen Basket Story</h2>
+          <p>Finding accurate information about local pop-up markets, community bachat bazaars, and organic vegetable hubs in Karachi has historically been reliant on word of mouth. Many shoppers didn't know which days markets were open or what produce was in season.</p>
+          <p>We developed FreshFind as a lightweight, lightning-fast digital platform that brings market locations, interactive mapping, live opening hours, and seasonal guides directly into the palm of your hand.</p>
+          <div class="story-badge-list">
+            <div class="story-badge-item">
+              <span class="story-badge-icon">📍</span>
+              <div>
+                <strong>Curated Local Directory</strong>
+                <p>Verified market coordinates, operating days, and typical produce lists.</p>
+              </div>
+            </div>
+            <div class="story-badge-item">
+              <span class="story-badge-icon">⚡</span>
+              <div>
+                <strong>Zero Barriers</strong>
+                <p>Fast browser experience without mandatory app downloads or registrations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="hero-card" style="transform:none; text-align:center;">
+            <div class="hero-card-top">OUR PROMISE</div>
+            <img src="images/logo.jpg" alt="FreshFind Official Logo" style="width:130px; height:130px; border-radius:22px; object-fit:cover; margin:15px auto 10px; display:block; box-shadow:0 8px 24px rgba(46,125,50,0.15);">
+            <h3>Fresh All Along</h3>
+            <p>From leafy spinach and crisp cucumbers to golden summer mangoes, FreshFind is your companion in celebrating fresh, regional eating every single day of the week.</p>
+            <span class="open-pill">● Supporting 6+ neighborhood hubs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-banner">
+        <div>
+          <h2>Ready to explore your local markets?</h2>
+          <p>Discover operating hours, see what's in season today, and plan your fresh food visit now.</p>
+        </div>
+        <a href="markets.html" class="btn">Explore Markets Directory</a>
+      </div>
+    </section>
+  </main>
+
+  <button class="chat-launcher" id="chatLauncher" aria-label="Open FreshFind assistant">🤖</button>
+  <aside class="chatbot" id="chatbot" aria-label="FreshFind assistant">
+    <div class="chat-header">
+      <div><strong>FreshFind Assistant</strong><small>🌿 Ask in English or اردو</small></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button id="chatLangToggle" style="font-size:0.72rem;padding:3px 8px;border-radius:8px;border:1px solid #c8e6c9;background:#e8f5e9;color:#2e7d32;cursor:pointer;font-weight:700;">🇵🇰 اردو</button>
+        <button id="chatClose" aria-label="Close chat">×</button>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="bot-message">Hi! Feel free to ask about our mission, market schedules, or finding fresh seasonal produce.</div>
+    </div>
+    <div class="quick-replies">
+      <button data-question="Which markets are open today?">Open today</button>
+      <button data-question="Where can I find mangoes?">Mangoes</button>
+      <button data-question="How do I use the map?">Map help</button>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" placeholder="Ask a question..." autocomplete="off">
+      <button aria-label="Send">➤</button>
+    </form>
+  </aside>
+
+  <footer>
+    <div class="brand"><img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img"><span>Fresh<span>Find</span></span></div>
+    <div class="footer-links">
+      <a href="index.html#home">Home</a>
+      <a href="markets.html">Market Page</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year"></span> FreshFind • eGreen Basket</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">↑</button>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  </script>
+</body>
+</html>
+

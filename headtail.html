@@ -1,0 +1,145 @@
+<script>
+// ----- TOSS PHASE -----
+alert (`Hi! I am kashif.`)
+alert (`whats yours`)
+let name = prompt(`Enter your name.`)
+alert (`Lets play head or tail Cricket.`)
+let userbatting = false;
+
+while (true) {
+    let userchoice = prompt("head or tail?").toLowerCase();
+    if (userchoice !== "head" && userchoice !== "tail") {
+        alert("Enter either head or tail!");
+        continue;
+    }
+
+    let kashifchoice = userchoice === "head" ? "tail" : "head";
+    alert(`kashif takes ${kashifchoice}`);
+
+    let tossnumuser = Number(prompt("Enter a number between  (1 to 5):"));
+    if (isNaN(tossnumuser) || tossnumuser < 1 || tossnumuser > 5) {
+        alert("Enter a valid number between 1 to 5");
+        continue;
+    }
+
+    let tossnumcomp = Math.floor(Math.random() * 5) + 1;
+    let toss_sum = tossnumuser + tossnumcomp;
+    let toss_result = toss_sum % 2 === 0 ? "tail" : "head";
+
+    alert(`${name} you chose ${tossnumuser}, kashif chose ${tossnumcomp}`);
+    alert(`Result: ${toss_result}`);
+
+    if (userchoice === toss_result) {
+        // User won toss
+        let userdecision = prompt(`${name} you won the toss! Batting or bowling?`).toLowerCase();
+        while (userdecision !== "batting" && userdecision !== "bowling") {
+            userdecision = prompt("Invalid choice! Type 'batting' or 'bowling'").toLowerCase();
+        }
+        alert(`${name} chose ${userdecision}`);
+        userbatting = userdecision === "batting";
+    } else {
+        // kashif won toss
+        let compdecision = Math.random() > 0.5 ? "batting" : "bowling";
+        alert(`kashif won the toss and chose to ${compdecision}`);
+        userbatting = (compdecision === "bowling");
+    }
+    break;
+}
+
+// ----- MATCH PHASE -----
+let firsttotal = 0;
+let secondtotal = 0;
+let target = 0;
+
+while (true) {
+    let usernum = Number(prompt("Enter a number between (1 to 6):"));
+    if (isNaN(usernum) || usernum < 1 || usernum > 6) {
+        alert("Enter a valid number between 1–6!");
+        continue;
+    }
+
+    let compnum = Math.floor(Math.random() * 6) + 1;
+    alert(`kashif chose ${compnum}`);
+
+    // FIRST INNINGS
+    if (target === 0) {
+        if (userbatting) {
+            if (usernum === compnum) {
+                alert(`${name} you're OUT! kashif also chose ${compnum}.`);
+                target = firsttotal + 1;
+                alert(`${name} you scored ${firsttotal}. kashif needs ${target} to win.`);
+                userbatting = false;
+                continue;
+            } else {
+                let thisTurn = usernum + compnum;
+                firsttotal += thisTurn;
+                alert(`This turn: ${usernum} + ${compnum} = ${thisTurn}`);
+                alert(`${name} your total score: ${firsttotal}`);
+            }
+        } else {
+            if (usernum === compnum) {
+                alert(`kashif is OUT! ${name} you also chose ${usernum}.`);
+                target = firsttotal + 1;
+                alert(`kashif scored ${firsttotal}. ${name} you need ${target} to win.`);
+                userbatting = true;
+                continue;
+            } else {
+                let thisTurn = usernum + compnum;
+                firsttotal += thisTurn;
+                alert(`This turn: ${usernum} + ${compnum} = ${thisTurn}`);
+                alert(`kashif total score: ${firsttotal}`);
+            }
+        }
+    }
+
+    // SECOND INNINGS
+    else {
+        if (userbatting) {
+            if (usernum === compnum) {
+                alert(`${name} you're OUT! kashif also chose ${compnum}.`);
+                alert(`${name} you scored ${secondtotal}.`);
+                if (secondtotal === firsttotal) {
+                    alert("Match tied!");
+                } else if (secondtotal > firsttotal) {
+                    alert(`${name} you won by ${secondtotal - firsttotal} runs!`);
+                } else {
+                    alert(`${name} you lost by ${firsttotal - secondtotal} runs.`);
+                }
+                break;
+            } else {
+                let thisTurn = usernum + compnum;
+                secondtotal += thisTurn;
+                alert(`This turn: ${usernum} + ${compnum} = ${thisTurn}`);
+                alert(`${name} your total: ${secondtotal}`);
+                if (secondtotal >= target) {
+                    alert(`Congratulations! ${name} you reached the target and won by ${secondtotal - firsttotal}runs`);
+                    break;
+                }
+            }
+        } else {
+            if (usernum === compnum) {
+                alert(`kashif is OUT! ${name} you also chose ${usernum}.`);
+                alert(`kashif scored ${secondtotal}.`);
+                if (secondtotal === firsttotal) {
+                    alert("Match tied!");
+                } else if (secondtotal > firsttotal) {
+                    alert(`kashif won by ${secondtotal - firsttotal} runs!`);
+                } else {
+                    alert(`${name} you won by ${firsttotal - secondtotal} runs!`);
+                }
+                break;
+            } else {
+                let thisTurn = usernum + compnum;
+                secondtotal += thisTurn;
+                alert(`This turn: ${usernum} + ${compnum} = ${thisTurn}`);
+                alert(`kashif total: ${secondtotal}`);
+                if (secondtotal >= target) {
+                    alert(`kashif reached the target! kashif won! by ${secondtotal - firsttotal}runs`);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+</script>

@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FreshFind Market Directory - Browse local farmers markets, hours, locations and seasonal produce.">
+  <meta name="theme-color" content="#2e7d32">
+  <title>Market Directory | FreshFind</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html#home" aria-label="FreshFind home">
+      <img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img">
+      <span>Fresh<span>Find</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    <nav id="mainNav">
+      <div class="dropdown" id="homeDropdown">
+        <a href="index.html#home" class="nav-link dropdown-toggle" id="homeDropdownBtn" aria-expanded="false" role="button">
+          <span>Home</span>
+          <span class="dropdown-caret">▾</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="homeDropdownBtn">
+          <div class="dropdown-heading">Explore FreshFind</div>
+          <a href="index.html#map-section" class="dropdown-item">
+            <span class="dropdown-icon">🗺️</span>
+            <div class="dropdown-text">
+              <strong>Map</strong>
+              <span>Interactive market map & locations</span>
+            </div>
+          </a>
+          <a href="index.html#produce" class="dropdown-item">
+            <span class="dropdown-icon">🥦</span>
+            <div class="dropdown-text">
+              <strong>Produce Guide</strong>
+              <span>Seasonal fruits & vegetables</span>
+            </div>
+          </a>
+          <a href="index.html#markets" class="dropdown-item">
+            <span class="dropdown-icon">🏪</span>
+            <div class="dropdown-text">
+              <strong>Market Directory</strong>
+              <span>Browse all local farmers markets</span>
+            </div>
+          </a>
+          <a href="contact.html" class="dropdown-item">
+            <span class="dropdown-icon">📞</span>
+            <div class="dropdown-text">
+              <strong>Contact Us</strong>
+              <span>Get in touch & send inquiries</span>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#home" class="dropdown-item">
+            <span class="dropdown-icon">🏠</span>
+            <div class="dropdown-text">
+              <strong>Home Overview</strong>
+              <span>Return to top of home</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a href="markets.html" class="nav-link active">Markets</a>
+      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="about.html" class="nav-link">About</a>
+      <button class="btn btn-small" id="loginBtn">Login</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="page-banner-content">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> <span>/</span> <span>Market Directory</span>
+        </div>
+        <div class="eyebrow">LOCAL PRODUCERS & HUBS</div>
+        <h1>Farmers Market Directory</h1>
+        <p>Explore community farmers markets and organic food hubs in your neighborhood. Check real-time opening hours, view operating days, save your favorite markets, and locate them directly on the interactive map.</p>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong id="marketCount">0</strong><span>Total Markets</span></div>
+      <div><strong id="openCount">0</strong><span>Open Right Now</span></div>
+      <div><strong id="produceCount">0</strong><span>Fresh Produce Items</span></div>
+      <div><strong id="clock">--:--:--</strong><span>Local Time</span></div>
+    </section>
+
+    <section id="markets" class="section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">BROWSE & FILTER</div>
+          <h2>Explore All Markets</h2>
+          <p>Filter by area, operating day, or search for your favorite vegetables and fruits.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-outline" id="locateBtn">📍 Near Me</button>
+          <button class="btn btn-outline" id="clearFilters">Clear Filters</button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="Search by market name, area or produce...">
+        <select id="areaFilter"><option value="">All Areas</option></select>
+        <select id="dayFilter">
+          <option value="">Any Day</option>
+          <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+          <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+        </select>
+        <select id="sortFilter">
+          <option value="name">Sort: Name</option>
+          <option value="open">Sort: Open Status</option>
+        </select>
+      </div>
+
+      <p class="result-count"></p>
+      <div id="marketGrid" class="market-grid"></div>
+      <p id="emptyState" class="empty hidden">No markets match your selected filters. Try clearing filters or searching for another keyword.</p>
+    </section>
+
+    <section id="map-section" class="section map-section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">LOCATION MAP</div>
+          <h2>Interactive Market Map</h2>
+          <p>Find the exact location of each farmers market on the map. Click any pin to view hours or open market details.</p>
+        </div>
+      </div>
+      <div id="map" class="map"></div>
+    </section>
+  </main>
+
+  <section class="newsletter-section">
+    <div class="eyebrow" style="color:#a5d6a7; letter-spacing:0.14em; font-size:0.78rem; margin-bottom:10px;">STAY UPDATED</div>
+    <h2>Get Fresh Market Updates</h2>
+    <p>Subscribe for weekly seasonal produce guides, new market openings, and tips for healthy local eating.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" placeholder="Your email address..." required>
+      <button type="submit">Subscribe 🌱</button>
+    </form>
+  </section>
+
+  <button class="chat-launcher" id="chatLauncher" aria-label="Open FreshFind assistant">🤖</button>
+  <aside class="chatbot" id="chatbot" aria-label="FreshFind assistant">
+    <div class="chat-header">
+      <div><strong>FreshFind Assistant</strong><small>🌿 Ask in English or اردو</small></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button id="chatLangToggle" style="font-size:0.72rem;padding:3px 8px;border-radius:8px;border:1px solid #c8e6c9;background:#e8f5e9;color:#2e7d32;cursor:pointer;font-weight:700;">🇵🇰 اردو</button>
+        <button id="chatClose" aria-label="Close chat">×</button>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="bot-message">Hi! Looking for a specific market, opening hours, or fresh produce? Ask me anytime.</div>
+    </div>
+    <div class="quick-replies">
+      <button data-question="Which markets are open today?">Open today</button>
+      <button data-question="Where can I find mangoes?">Mangoes</button>
+      <button data-question="How do I use the map?">Map help</button>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" placeholder="Ask a question..." autocomplete="off">
+      <button aria-label="Send">➤</button>
+    </form>
+  </aside>
+
+  <div class="modal hidden" id="marketModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="brand"><img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img"><span>Fresh<span>Find</span></span></div>
+    <div class="footer-links">
+      <a href="index.html#home">Home</a>
+      <a href="markets.html">Market Page</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year"></span> FreshFind • eGreen Basket</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  </script>
+</body>
+</html>
+

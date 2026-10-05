@@ -1,0 +1,20 @@
+{
+  "name": "FreshFind",
+  "short_name": "FreshFind",
+  "description": "Discover fresh local farmers markets and seasonal produce in Karachi.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f7fcf7",
+  "theme_color": "#2e7d32",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/logo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["food", "lifestyle", "shopping"],
+  "lang": "en"
+}

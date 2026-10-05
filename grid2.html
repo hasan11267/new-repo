@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>CSS GRID</title>
+        <STYLE>
+            .parent {
+                border: rgb(129, 108, 55) solid;
+                background-color: rgb(119, 96, 90);
+                height: auto;
+                width: 1000px;
+                display: grid;
+                grid-template-columns:auto auto auto auto;
+                grid-template-rows: auto auto auto auto;
+
+                grid-template-areas: "header header header header"
+                "header header header header"
+                "nav nav nav nav"
+                "side main main main "
+                "side main main main "
+                "side main main main "
+                "footer footer footer footer"
+                ;
+
+
+
+
+            }
+
+            .child {
+      /* width: auto;
+            height: auto; */
+            background-color: rgb(184, 224, 50);
+            margin: 5px;
+            /* border: rgb(60, 91, 19) solid 3px; */
+            /* text-align: center;
+            align-content: center; */
+           border-radius: 10px;
+           /* justify-self: center; */
+            }
+            .child-1{
+                grid-area: header;
+            }
+            .child-2{
+                grid-area: nav;
+            }
+            .child-3{
+                grid-area: side;
+            }
+            .child-4{
+                grid-area: main;
+            }
+            .child-5{
+                grid-area: footer;
+            }
+      
+        
+               
+        
+        </STYLE>
+    </head>
+
+    <body>
+        <div class="parent">
+            <div class="child child-1"> <h1>MY WEBSITE</h1> </div>
+            <div class="child child-2">
+              
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">about us</a></li>
+                    <li><a href="">Contact us</a></li>
+                </ul>
+
+            </div>
+            <div class="child child-3">
+                <ul>
+                    <h2>SIDE BAR</h2>
+                  <li><a href="">content 1</a></li>
+                  <li><a href="">content 2</a></li>
+                  <li><a href="">content 3</a></li>
+                  <li><a href="">content 4</a></li>
+                  <li><a href="">content 5</a></li>
+                </ul>
+            </div>
+            <div class="child child-4">
+                <article>
+                    <h3>ariicle</h3>
+                </article>              
+            </div>
+            <div class="child child-5">
+                <h2>WEBSITE FOOTER</h2>
+            </div>
+          
+
+        </div>
+    </body>
+
+    </html>
+</body>
+
+</html>

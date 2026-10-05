@@ -1,0 +1,1 @@
+Reserved for market and produce images. Emoji illustrations are used in this demo so the project works without additional image downloads.

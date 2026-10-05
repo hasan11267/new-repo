@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact FreshFind - Get in touch with our team for questions about farmers markets and local seasonal produce.">
+  <meta name="theme-color" content="#2e7d32">
+  <title>Contact Us | FreshFind</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html#home" aria-label="FreshFind home">
+      <img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img">
+      <span>Fresh<span>Find</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    <nav id="mainNav">
+      <div class="dropdown" id="homeDropdown">
+        <a href="index.html#home" class="nav-link dropdown-toggle" id="homeDropdownBtn" aria-expanded="false" role="button">
+          <span>Home</span>
+          <span class="dropdown-caret">▾</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="homeDropdownBtn">
+          <div class="dropdown-heading">Explore FreshFind</div>
+          <a href="index.html#map-section" class="dropdown-item">
+            <span class="dropdown-icon">🗺️</span>
+            <div class="dropdown-text">
+              <strong>Map</strong>
+              <span>Interactive market map & locations</span>
+            </div>
+          </a>
+          <a href="index.html#produce" class="dropdown-item">
+            <span class="dropdown-icon">🥦</span>
+            <div class="dropdown-text">
+              <strong>Produce Guide</strong>
+              <span>Seasonal fruits & vegetables</span>
+            </div>
+          </a>
+          <a href="index.html#markets" class="dropdown-item">
+            <span class="dropdown-icon">🏪</span>
+            <div class="dropdown-text">
+              <strong>Market Directory</strong>
+              <span>Browse all local farmers markets</span>
+            </div>
+          </a>
+          <a href="contact.html" class="dropdown-item active">
+            <span class="dropdown-icon">📞</span>
+            <div class="dropdown-text">
+              <strong>Contact Us</strong>
+              <span>Get in touch & send inquiries</span>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#home" class="dropdown-item">
+            <span class="dropdown-icon">🏠</span>
+            <div class="dropdown-text">
+              <strong>Home Overview</strong>
+              <span>Return to top of home</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a href="markets.html" class="nav-link">Markets</a>
+      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="about.html" class="nav-link">About</a>
+      <button class="btn btn-small" id="loginBtn">Login</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="page-banner-content">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> <span>/</span> <span>Contact Us</span>
+        </div>
+        <div class="eyebrow">GET IN TOUCH</div>
+        <h1>We’d Love to Hear From You</h1>
+        <p>Whether you're a local grower wanting to list your farmers market, a shopper looking for seasonal advice, or someone with feedback to make FreshFind better, reach out to our team.</p>
+      </div>
+    </section>
+
+    <section class="section" style="background:#fff;">
+      <div class="contact-wrapper">
+        <div class="contact-card">
+          <div class="eyebrow">COMMUNITY OFFICE</div>
+          <h2>Contact Information</h2>
+          <p>We are based in Karachi and work with community organizers and growers across the region.</p>
+
+          <div class="story-badge-list" style="margin-top:20px;">
+            <div class="story-badge-item">
+              <span class="story-badge-icon">📍</span>
+              <div>
+                <strong>Location</strong>
+                <p>Clifton & DHA Community Zone, Karachi, Pakistan</p>
+              </div>
+            </div>
+            <div class="story-badge-item">
+              <span class="story-badge-icon">📧</span>
+              <div>
+                <strong>Email Inquiries</strong>
+                <p>hello@freshfind.example</p>
+              </div>
+            </div>
+            <div class="story-badge-item">
+              <span class="story-badge-icon">📞</span>
+              <div>
+                <strong>Phone Support</strong>
+                <p>+92 300 0000000 (Mon–Sat, 9 AM – 6 PM)</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:25px; padding:18px; background:#eef7ee; border-radius:14px; border:1px solid #d5ead8;">
+            <strong style="color:#1b5e20; font-size:0.88rem;">💡 Need Quick Answers?</strong>
+            <p style="margin:4px 0 0; font-size:0.84rem; color:#42614a;">Our offline smart assistant is available 24/7 at the bottom-right corner to help with market hours, produce listings, and map navigation.</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="eyebrow">SEND A MESSAGE</div>
+          <h2>Send Us an Inquiry</h2>
+          <div id="formFeedback" class="hidden" style="padding:14px 18px; margin-bottom:18px; border-radius:12px; background:#e8f5e9; border:1px solid #c8e6c9; color:#1b5e20; font-weight:600; font-size:0.9rem;"></div>
+
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="contactName">Your Name *</label>
+              <input type="text" id="contactName" class="form-control" placeholder="e.g. Enter your Name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="Team@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject">Subject / Topic</label>
+              <select id="contactSubject" class="form-control">
+                <option value="General Inquiry">General Question</option>
+                <option value="Market Suggestion">Suggest a New Farmers Market</option>
+                <option value="Produce Availability">Produce & Seasonal Info</option>
+                <option value="Platform Feedback">Website Feedback</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Your Message *</label>
+              <textarea id="contactMessage" class="form-control" placeholder="How can we assist you with local fresh markets?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width:100%;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="chat-launcher" id="chatLauncher" aria-label="Open FreshFind assistant">🤖</button>
+  <aside class="chatbot" id="chatbot" aria-label="FreshFind assistant">
+    <div class="chat-header">
+      <div><strong>FreshFind Assistant</strong><small>🌿 Ask in English or اردو</small></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button id="chatLangToggle" style="font-size:0.72rem;padding:3px 8px;border-radius:8px;border:1px solid #c8e6c9;background:#e8f5e9;color:#2e7d32;cursor:pointer;font-weight:700;">🇵🇰 اردو</button>
+        <button id="chatClose" aria-label="Close chat">×</button>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="bot-message">Hi! Need help contacting a market, finding opening hours, or locating seasonal food? Ask me!</div>
+    </div>
+    <div class="quick-replies">
+      <button data-question="Which markets are open today?">Open today</button>
+      <button data-question="Where can I find mangoes?">Mangoes</button>
+      <button data-question="How do I use the map?">Map help</button>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" placeholder="Ask a question..." autocomplete="off">
+      <button aria-label="Send">➤</button>
+    </form>
+  </aside>
+
+  <footer>
+    <div class="brand"><img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img"><span>Fresh<span>Find</span></span></div>
+    <div class="footer-links">
+      <a href="index.html#home">Home</a>
+      <a href="markets.html">Market Page</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year"></span> FreshFind • eGreen Basket</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">↑</button>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  </script>
+</body>
+</html>
+

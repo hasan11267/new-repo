@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Mango",
+    "category": "Fruits",
+    "season": "May - August",
+    "emoji": "\ud83e\udd6d",
+    "description": "Sweet seasonal fruit commonly available at Fresh Basket Market."
+  },
+  {
+    "name": "Apple",
+    "category": "Fruits",
+    "season": "August - November",
+    "emoji": "\ud83c\udf4e",
+    "description": "Crisp fruit available from selected local and regional growers."
+  },
+  {
+    "name": "Orange",
+    "category": "Fruits",
+    "season": "November - February",
+    "emoji": "\ud83c\udf4a",
+    "description": "Citrus fruit commonly featured in winter produce selections."
+  },
+  {
+    "name": "Spinach",
+    "category": "Vegetables",
+    "season": "October - March",
+    "emoji": "\ud83e\udd6c",
+    "description": "Leafy green suitable for salads, curries and cooked dishes."
+  },
+  {
+    "name": "Carrot",
+    "category": "Vegetables",
+    "season": "November - March",
+    "emoji": "\ud83e\udd55",
+    "description": "Crunchy seasonal vegetable sold at several markets."
+  },
+  {
+    "name": "Tomato",
+    "category": "Vegetables",
+    "season": "Year-round",
+    "emoji": "\ud83c\udf45",
+    "description": "Everyday produce item available across multiple markets."
+  },
+  {
+    "name": "Mint",
+    "category": "Herbs",
+    "season": "Year-round",
+    "emoji": "\ud83c\udf3f",
+    "description": "Fresh aromatic herb often sold in small bunches."
+  },
+  {
+    "name": "Honey",
+    "category": "Pantry",
+    "season": "Year-round",
+    "emoji": "\ud83c\udf6f",
+    "description": "Locally sourced pantry item available at selected markets."
+  }
+]

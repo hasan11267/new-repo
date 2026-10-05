@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FreshFind - Discover fresh local farmers markets and seasonal produce in Karachi.">
+  <meta name="theme-color" content="#2e7d32">
+  <meta property="og:title" content="FreshFind | Fresh All Along">
+  <meta property="og:description" content="Discover farmers markets near you, check opening hours, explore seasonal produce.">
+  <meta property="og:image" content="images/logo.jpg">
+  <meta property="og:type" content="website">
+  <title>FreshFind | Fresh All Along</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html#home" aria-label="FreshFind home">
+      <img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img">
+      <span>Fresh<span>Find</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    <nav id="mainNav">
+      <div class="dropdown" id="homeDropdown">
+        <a href="index.html#home" class="nav-link dropdown-toggle active" id="homeDropdownBtn" aria-expanded="false" role="button">
+          <span>Home</span>
+          <span class="dropdown-caret">▾</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="homeDropdownBtn">
+          <div class="dropdown-heading">Explore FreshFind</div>
+          <a href="index.html#map-section" class="dropdown-item">
+            <span class="dropdown-icon">🗺️</span>
+            <div class="dropdown-text">
+              <strong>Map</strong>
+              <span>Interactive market map & locations</span>
+            </div>
+          </a>
+          <a href="index.html#produce" class="dropdown-item">
+            <span class="dropdown-icon">🥦</span>
+            <div class="dropdown-text">
+              <strong>Produce Guide</strong>
+              <span>Seasonal fruits & vegetables</span>
+            </div>
+          </a>
+          <a href="index.html#markets" class="dropdown-item">
+            <span class="dropdown-icon">🏪</span>
+            <div class="dropdown-text">
+              <strong>Market Directory</strong>
+              <span>Browse all local farmers markets</span>
+            </div>
+          </a>
+          <a href="contact.html" class="dropdown-item">
+            <span class="dropdown-icon">📞</span>
+            <div class="dropdown-text">
+              <strong>Contact Us</strong>
+              <span>Get in touch & send inquiries</span>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#home" class="dropdown-item">
+            <span class="dropdown-icon">🏠</span>
+            <div class="dropdown-text">
+              <strong>Home Overview</strong>
+              <span>Return to top of home</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a href="markets.html" class="nav-link">Markets</a>
+      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="about.html" class="nav-link">About</a>
+      <button class="btn btn-small" id="loginBtn">Login</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">🌱 LOCAL • SEASONAL • FRESH</div>
+        <h1>Fresh All Along.</h1>
+        <p>Discover farmers markets near you, check opening hours, explore seasonal produce, and plan your next fresh-food visit.</p>
+        <div class="hero-search">
+          <input id="heroSearch" type="search" placeholder="Search by market, area or produce..." aria-label="Search markets">
+          <button class="btn" id="heroSearchBtn">Find a Market</button>
+        </div>
+        <button class="location-btn" id="locateBtn">📍 Find Markets Near Me</button>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-top">THIS WEEK</div>
+        <div class="hero-card-img">
+          <img src="images/hero-seasonal.jpg" alt="Seasonal fresh greens" loading="lazy">
+        </div>
+        <h3>Seasonal greens</h3>
+        <p>Spinach, herbs, lettuce and more from local growers.</p>
+        <span class="open-pill">● Markets open today</span>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong id="marketCount">0</strong><span>Local Markets</span></div>
+      <div><strong id="produceCount">0</strong><span>Produce Items</span></div>
+      <div><strong id="visitorCount">0</strong><span>Visitors</span></div>
+      <div><strong id="clock">--:--:--</strong><span>Local Time</span></div>
+    </section>
+
+    <section id="markets" class="section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">DISCOVER</div>
+          <h2>Market Directory</h2>
+          <p>Browse local markets and find fresh produce around your neighborhood.</p>
+        </div>
+        <button class="btn btn-outline" id="clearFilters">Clear Filters</button>
+      </div>
+
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="Search markets or produce...">
+        <select id="areaFilter"><option value="">All Areas</option></select>
+        <select id="dayFilter">
+          <option value="">Any Day</option>
+          <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+          <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+        </select>
+        <select id="sortFilter">
+          <option value="name">Sort: Name</option>
+          <option value="open">Sort: Open Status</option>
+        </select>
+      </div>
+
+      <div id="marketGrid" class="market-grid"></div>
+      <p id="emptyState" class="empty hidden">No markets match your filters.</p>
+    </section>
+
+    <section id="map-section" class="section map-section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">EXPLORE</div>
+          <h2>Interactive Market Map</h2>
+          <p>Click a marker to see market details. Use “Find Near Me” to center the map on your location.</p>
+        </div>
+      </div>
+      <div id="map" class="map"></div>
+    </section>
+
+    <section id="produce" class="section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">SEASONAL PICKS</div>
+          <h2>Produce Guide</h2>
+          <p>Explore what you can typically find at FreshFind markets.</p>
+        </div>
+        <select id="categoryFilter" class="category-filter">
+          <option value="">All Categories</option>
+        </select>
+      </div>
+      <div class="produce-search-wrap">
+        <span>🔍</span>
+        <input id="produceSearch" type="search" placeholder="Search produce by name, season or category..." autocomplete="off">
+      </div>
+      <div id="produceGrid" class="produce-grid"></div>
+    </section>
+
+    <section id="about" class="section about">
+      <div>
+        <div class="eyebrow">ABOUT FRESHFIND</div>
+        <h2>Making local food easier to discover.</h2>
+      </div>
+      <p>FreshFind brings market locations, schedules and seasonal produce information together in one lightweight browser-based experience. It uses pre-populated data and frontend logic, so it can run without a backend server.</p>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div>
+        <div class="eyebrow">GET IN TOUCH</div>
+        <h2>Contact Us</h2>
+        <p>Email: hello@freshfind.example<br>Phone: +92 300 0000000<br>Hours: Mon–Sat, 9 AM–6 PM</p>
+      </div>
+      <div class="contact-note">📍 Karachi, Pakistan<br><small>Map and location tools are provided for demonstration.</small></div>
+    </section>
+  </main>
+
+<button class="chat-launcher" id="chatLauncher" aria-label="Open FreshFind assistant">
+    <i class="fa-solid fa-robot"></i>
+</button>  <aside class="chatbot" id="chatbot" aria-label="FreshFind assistant">
+    <div class="chat-header">
+      <div><strong>FreshFind Assistant</strong><small>🌿 Ask in English or اردو</small></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button id="chatLangToggle" style="font-size:0.72rem;padding:3px 8px;border-radius:8px;border:1px solid #c8e6c9;background:#e8f5e9;color:#2e7d32;cursor:pointer;font-weight:700;">🇵🇰 اردو</button>
+        <button id="chatClose" aria-label="Close chat">×</button>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="bot-message">Hi! Ask me about markets, produce, opening hours or finding a market near you.</div>
+    </div>
+    <div class="quick-replies">
+      <button data-question="Which markets are open today?">Open today</button>
+      <button data-question="Where can I find mangoes?">Mangoes</button>
+      <button data-question="How do I use the map?">Map help</button>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" placeholder="Ask a question..." autocomplete="off">
+      <button aria-label="Send">➤</button>
+    </form>
+  </aside>
+
+  <div class="modal hidden" id="marketModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <section class="newsletter-section">
+    <div class="eyebrow" style="color:#a5d6a7; letter-spacing:0.14em; font-size:0.78rem; margin-bottom:10px;">STAY UPDATED</div>
+    <h2>Get Fresh Market Updates</h2>
+    <p>Subscribe for weekly seasonal produce guides, new market openings, and tips for healthy local eating.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" placeholder="Your email address..." required>
+      <button type="submit">Subscribe 🌱</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="brand"><img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img"><span>Fresh<span>Find</span></span></div>
+    <div class="footer-links">
+      <a href="index.html#home">Home</a>
+      <a href="markets.html">Market Page</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year"></span> FreshFind • eGreen Basket</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    // Navbar scroll shadow
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  </script>
+</body>
+</html>
+

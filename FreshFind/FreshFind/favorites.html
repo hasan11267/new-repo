@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View and manage your saved FreshFind markets.">
+  <meta name="theme-color" content="#2e7d32">
+  <title>Favorite Markets | FreshFind</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="images/logo-icon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body data-page="favorites">
+  <header class="navbar">
+    <a class="brand" href="index.html#home" aria-label="FreshFind home">
+      <img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img">
+      <span>Fresh<span>Find</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    <nav id="mainNav">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="markets.html" class="nav-link">Markets</a>
+      <a href="favorites.html" class="nav-link active" aria-current="page">Favorites</a>
+      <a href="about.html" class="nav-link">About</a>
+      <button class="btn btn-small" id="loginBtn">Login</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="page-banner-content">
+        <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Favorites</span></div>
+        <div class="eyebrow">YOUR SAVED PLACES</div>
+        <h1>Favorite Markets</h1>
+        <p>Markets you save with the heart button will appear here.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">SAVED MARKETS</div>
+          <h2>Your list</h2>
+        </div>
+        <a href="markets.html" class="btn btn-outline">Browse Markets</a>
+      </div>
+      <p class="result-count"></p>
+      <div id="marketGrid" class="market-grid"></div>
+      <div id="emptyState" class="empty hidden">
+        <h3>No favorite markets yet</h3>
+        <p>Save a market using its heart button and it will show up here.</p>
+        <a href="markets.html" class="btn primary">Explore Markets</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand"><img src="images/logo-icon.svg" alt="FreshFind Logo" class="brand-logo-img"><span>Fresh<span>Find</span></span></div>
+    <div class="footer-links">
+      <a href="index.html#home">Home</a>
+      <a href="markets.html">Market Page</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>© <span id="year"></span> FreshFind • eGreen Basket</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">↑</button>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

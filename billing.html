@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var cu = parseInt(prompt("enter your consumed units"))
+        var perunit = 5
+        var bill = (cu * perunit)
+        if (cu > 0 && cu < 100) {
+            document.write(`your consume units are ${cu} <br>`)
+            document.write(`your bill is ${bill} <br>`)
+            document.write(`your per unit price is ${perunit}`)
+        }
+        else if (cu > 100) {
+          
+
+
+            var discount = (bill * 0.10)
+            var disbill = bill - discount
+            var perunit_afterdis = (disbill / cu)
+            document.write(`your consume units are ${cu} <br>`)
+            document.write(`your bill is ${bill} <br>`)
+            document.write(`your total bill after 10% discount is ${disbill} <br>`)
+            document.write(`your per unit price is ${perunit}`)
+            document.write(`your per unit price after discount is ${perunit_afterdis}`)
+        }
+        else {
+            var alert = alert("Enter right Value")
+            document.write(alert)
+        }
+
+    </script>
+</body>
+
+</html>

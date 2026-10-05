@@ -1,0 +1,120 @@
+[
+  {
+    "id": 1,
+    "name": "Green Valley Market",
+    "area": "North Karachi",
+    "days": [
+      "Saturday",
+      "Sunday"
+    ],
+    "time": "08:00 - 17:00",
+    "description": "Community farmers market featuring fresh vegetables, fruit and herbs.",
+    "products": [
+      "Tomato",
+      "Potato",
+      "Spinach",
+      "Apple"
+    ],
+    "lat": 24.9272,
+    "lng": 67.0561,
+    "icon": "\ud83e\udd6c"
+  },
+  {
+    "id": 2,
+    "name": "Fresh Basket Market",
+    "area": "Gulshan",
+    "days": [
+      "Friday"
+    ],
+    "time": "09:00 - 18:00",
+    "description": "A neighborhood market with seasonal fruit, dairy and local herbs.",
+    "products": [
+      "Mango",
+      "Banana",
+      "Milk",
+      "Herbs"
+    ],
+    "lat": 24.9205,
+    "lng": 67.0831,
+    "icon": "\ud83e\udd6d"
+  },
+  {
+    "id": 3,
+    "name": "Organic Town Market",
+    "area": "Clifton",
+    "days": [
+      "Sunday"
+    ],
+    "time": "07:00 - 16:00",
+    "description": "Local growers offering organic-style produce, eggs and honey.",
+    "products": [
+      "Carrot",
+      "Orange",
+      "Honey",
+      "Eggs"
+    ],
+    "lat": 24.8138,
+    "lng": 67.0305,
+    "icon": "\ud83e\udd55"
+  },
+  {
+    "id": 4,
+    "name": "Sunrise Farmers Market",
+    "area": "PECHS",
+    "days": [
+      "Tuesday",
+      "Saturday"
+    ],
+    "time": "07:30 - 15:00",
+    "description": "Early morning market popular for leafy greens and fresh fruit.",
+    "products": [
+      "Lettuce",
+      "Orange",
+      "Cucumber",
+      "Mint"
+    ],
+    "lat": 24.8667,
+    "lng": 67.0731,
+    "icon": "\ud83c\udf31"
+  },
+  {
+    "id": 5,
+    "name": "Harvest Corner",
+    "area": "DHA",
+    "days": [
+      "Wednesday",
+      "Saturday"
+    ],
+    "time": "10:00 - 19:00",
+    "description": "Convenient weekend market with produce from nearby growers.",
+    "products": [
+      "Apple",
+      "Carrot",
+      "Tomato",
+      "Honey"
+    ],
+    "lat": 24.8015,
+    "lng": 67.0648,
+    "icon": "\ud83c\udf4e"
+  },
+  {
+    "id": 6,
+    "name": "Green Roots Market",
+    "area": "Malir",
+    "days": [
+      "Thursday",
+      "Sunday"
+    ],
+    "time": "08:00 - 16:00",
+    "description": "Fresh local vegetables, herbs and seasonal fruit for families.",
+    "products": [
+      "Potato",
+      "Spinach",
+      "Banana",
+      "Coriander"
+    ],
+    "lat": 24.894,
+    "lng": 67.19,
+    "icon": "\ud83e\udd54"
+  }
+]

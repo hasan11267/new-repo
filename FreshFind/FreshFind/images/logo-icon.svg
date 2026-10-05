@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <defs>
+    <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#81c784"/>
+      <stop offset="100%" stop-color="#2e7d32"/>
+    </linearGradient>
+    <linearGradient id="basketGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#43a047"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </linearGradient>
+  </defs>
+  <!-- Background soft round -->
+  <rect width="48" height="48" rx="14" fill="#e8f5e9"/>
+  <!-- Central Sprout / Leaves -->
+  <path d="M24 9C24 9 27.5 15.5 27.5 21C27.5 23.2 25.8 25 24 25C22.2 25 20.5 23.2 20.5 21C20.5 15.5 24 9 24 9Z" fill="url(#leafGrad)"/>
+  <!-- Left Leaf -->
+  <path d="M22 19C17.5 16.5 13.5 19 12.5 23.5C12.5 26.5 15.8 27.5 19 26.5C21.2 25.5 22.8 23.2 22 19Z" fill="#66bb6a"/>
+  <!-- Right Leaf / Find Loop Accent -->
+  <path d="M26 19C30.5 16.5 34.5 19 35.5 23.5C35.5 26.5 32.2 27.5 29 26.5C26.8 25.5 25.2 23.2 26 19Z" fill="#43a047"/>
+  <!-- Magnifying glass discovery accent -->
+  <circle cx="34.5" cy="14.5" r="4.5" stroke="#7cb342" stroke-width="2.2" fill="#ffffff" fill-opacity="0.8"/>
+  <line x1="38" y1="18" x2="41.5" y2="21.5" stroke="#7cb342" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Basket Rim -->
+  <rect x="10" y="24" width="28" height="4.5" rx="2.25" fill="url(#basketGrad)"/>
+  <!-- Basket Body -->
+  <path d="M12.5 27.5L15.5 40.5C15.8 41.7 16.9 42.5 18.2 42.5H29.8C31.1 42.5 32.2 41.7 32.5 40.5L35.5 27.5H12.5Z" fill="url(#basketGrad)"/>
+  <!-- Basket Lattice Lines -->
+  <path d="M16 29L30 41.5M32 29L18 41.5M21 29L32 38.5M27 29L16 38.5" stroke="#a5d6a7" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

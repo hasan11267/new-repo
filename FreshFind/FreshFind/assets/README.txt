@@ -1,0 +1,1 @@
+Reserved for logos, icons, screenshots and other static assets.

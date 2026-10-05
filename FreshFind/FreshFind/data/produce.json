@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Mango",
+    "category": "Fruits",
+    "season": "May - August",
+    "image": "images/produce-mango.jpg",
+    "description": "Sweet seasonal fruit commonly available at Fresh Basket Market."
+  },
+  {
+    "name": "Apple",
+    "category": "Fruits",
+    "season": "August - November",
+    "image": "images/produce-apple.jpg",
+    "description": "Crisp fruit available from selected local and regional growers."
+  },
+  {
+    "name": "Orange",
+    "category": "Fruits",
+    "season": "November - February",
+    "image": "images/produce-orange.jpg",
+    "description": "Citrus fruit commonly featured in winter produce selections."
+  },
+  {
+    "name": "Spinach",
+    "category": "Vegetables",
+    "season": "October - March",
+    "image": "images/produce-spinach.jpg",
+    "description": "Leafy green suitable for salads, curries and cooked dishes."
+  },
+  {
+    "name": "Carrot",
+    "category": "Vegetables",
+    "season": "November - March",
+    "image": "images/produce-carrot.jpg",
+    "description": "Crunchy seasonal vegetable sold at several markets."
+  },
+  {
+    "name": "Tomato",
+    "category": "Vegetables",
+    "season": "Year-round",
+    "image": "images/produce-tomato.jpg",
+    "description": "Everyday produce item available across multiple markets."
+  },
+  {
+    "name": "Mint",
+    "category": "Herbs",
+    "season": "Year-round",
+    "image": "images/produce-mint.jpg",
+    "description": "Fresh aromatic herb often sold in small bunches."
+  },
+  {
+    "name": "Honey",
+    "category": "Pantry",
+    "season": "Year-round",
+    "image": "images/produce-honey.jpg",
+    "description": "Locally sourced pantry item available at selected markets."
+  },
+  {
+    "name": "Banana",
+    "category": "Fruits",
+    "season": "Year-round",
+    "image": "images/produce-mango.jpg",
+    "description": "Popular everyday fruit stocked by many neighborhood produce sellers."
+  },
+  {
+    "name": "Guava",
+    "category": "Fruits",
+    "season": "September - December",
+    "image": "images/produce-apple.jpg",
+    "description": "Fragrant seasonal fruit enjoyed fresh or blended into drinks."
+  },
+  {
+    "name": "Pomegranate",
+    "category": "Fruits",
+    "season": "September - February",
+    "image": "images/produce-orange.jpg",
+    "description": "Juicy, tart-sweet fruit commonly sold during the cooler season."
+  },
+  {
+    "name": "Lemon",
+    "category": "Fruits",
+    "season": "Year-round",
+    "image": "images/produce-orange.jpg",
+    "description": "A versatile citrus staple used in drinks, marinades and everyday cooking."
+  },
+  {
+    "name": "Cucumber",
+    "category": "Vegetables",
+    "season": "October - April",
+    "image": "images/produce-tomato.jpg",
+    "description": "Crisp, refreshing vegetable often served in salads and raita."
+  },
+  {
+    "name": "Okra",
+    "category": "Vegetables",
+    "season": "May - October",
+    "image": "images/produce-spinach.jpg",
+    "description": "A warm-season vegetable commonly used in home-style curries."
+  },
+  {
+    "name": "Cauliflower",
+    "category": "Vegetables",
+    "season": "November - February",
+    "image": "images/produce-carrot.jpg",
+    "description": "Cool-season vegetable suitable for curries, roasting and stir-fries."
+  },
+  {
+    "name": "Coriander",
+    "category": "Herbs",
+    "season": "October - March",
+    "image": "images/produce-mint.jpg",
+    "description": "Fresh leafy herb used as a garnish and in chutneys and sauces."
+  }
+]

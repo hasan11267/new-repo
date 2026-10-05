@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nova Shop — Modern E-Commerce</title>
+
+<style>
+
+/* =====================================
+   RESET
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8fafc;
+    color: #111827;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: #4f46e5;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #374151;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #4f46e5;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    background: white;
+    font-size: 18px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -4px;
+    right: -3px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #ef4444;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.menu-btn {
+    display: none;
+    border: none;
+    background: transparent;
+    font-size: 27px;
+}
+
+
+/* =====================================
+   HERO SLIDER
+===================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: #111827;
+}
+
+.slider {
+    position: relative;
+    height: 570px;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .7s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.slide-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(17,24,39,.85),
+            rgba(17,24,39,.3),
+            rgba(17,24,39,.05)
+        );
+}
+
+.slide-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.slide-content-inner {
+    max-width: 560px;
+}
+
+.slide-label {
+    display: inline-block;
+    background: #6366f1;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.slide h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.slide p {
+    color: #e5e7eb;
+    font-size: 17px;
+    max-width: 500px;
+    margin-bottom: 28px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 14px 25px;
+    background: white;
+    color: #111827;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.hero-btn:hover {
+    background: #6366f1;
+    color: white;
+    transform: translateY(-3px);
+}
+
+
+/* slider controls */
+
+.slider-arrow {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    font-size: 20px;
+    color: #111827;
+}
+
+.slider-arrow:hover {
+    background: #6366f1;
+    color: white;
+}
+
+.prev {
+    left: 25px;
+}
+
+.next {
+    right: 25px;
+}
+
+.slider-dots {
+    position: absolute;
+    z-index: 5;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.5);
+}
+
+.dot.active {
+    width: 28px;
+    border-radius: 10px;
+    background: white;
+}
+
+
+/* =====================================
+   SECTIONS
+===================================== */
+
+section {
+    padding: 80px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #6b7280;
+}
+
+
+/* =====================================
+   CATEGORY SLIDER
+===================================== */
+
+.category-wrapper {
+    position: relative;
+}
+
+.category-slider {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.category-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.category {
+    min-width: 170px;
+    height: 170px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.category:hover img {
+    transform: scale(1.08);
+}
+
+.category::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.7)
+    );
+}
+
+.category span {
+    position: absolute;
+    z-index: 2;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+/* =====================================
+   PRODUCT GRID
+===================================== */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 45px rgba(0,0,0,.08);
+}
+
+.product-image {
+    position: relative;
+    height: 280px;
+    background: #f3f4f6;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.sale {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #ef4444;
+    color: white;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.wishlist {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    font-size: 17px;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.product-category {
+    color: #6366f1;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.product-info h3 {
+    margin: 7px 0;
+    font-size: 16px;
+}
+
+.rating {
+    color: #f59e0b;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 15px;
+}
+
+.current-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.old-price {
+    color: #9ca3af;
+    text-decoration: line-through;
+    font-size: 13px;
+}
+
+.add-cart {
+    width: 100%;
+    border: none;
+    padding: 11px;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.add-cart:hover {
+    background: #4f46e5;
+}
+
+
+/* =====================================
+   PROMO BANNER
+===================================== */
+
+.promo {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(79,70,229,.96),
+            rgba(124,58,237,.88)
+        ),
+        url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    color: white;
+}
+
+.promo-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.promo h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.promo p {
+    color: #e0e7ff;
+}
+
+.promo-btn {
+    background: white;
+    color: #4f46e5;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/* =====================================
+   TWO COLUMN SHOWCASE
+===================================== */
+
+.showcase {
+    background: white;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.showcase-card {
+    min-height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.showcase-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.showcase-card:hover img {
+    transform: scale(1.05);
+}
+
+.showcase-content {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 35px;
+    color: white;
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.8)
+    );
+}
+
+.showcase-content h3 {
+    font-size: 28px;
+    margin-bottom: 7px;
+}
+
+.showcase-content p {
+    color: #e5e7eb;
+    margin-bottom: 15px;
+}
+
+.showcase-content a {
+    color: white;
+    font-weight: bold;
+}
+
+
+/* =====================================
+   BENEFITS
+===================================== */
+
+.benefits {
+    background: #f1f5f9;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.benefit {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    margin: auto auto 15px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #e0e7ff;
+    color: #4f46e5;
+    font-size: 25px;
+}
+
+.benefit h3 {
+    margin-bottom: 7px;
+    font-size: 17px;
+}
+
+.benefit p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* =====================================
+   NEWSLETTER
+===================================== */
+
+.newsletter {
+    background: #111827;
+    color: white;
+    text-align: center;
+}
+
+.newsletter h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.newsletter p {
+    color: #9ca3af;
+    margin-bottom: 25px;
+}
+
+.newsletter-form {
+    max-width: 520px;
+    margin: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 14px 16px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.newsletter-form button {
+    border: none;
+    padding: 0 22px;
+    border-radius: 8px;
+    background: #6366f1;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+    background: #080d16;
+    color: #9ca3af;
+    padding: 65px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 45px;
+    padding-bottom: 45px;
+}
+
+.footer-brand h3 {
+    color: white;
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.footer-brand p {
+    max-width: 330px;
+}
+
+.footer-column h4 {
+    color: white;
+    margin-bottom: 18px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin: 11px 0;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid #1f2937;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 13px;
+}
+
+
+/* =====================================
+   TOAST
+===================================== */
+
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #111827;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 9px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: .3s;
+    z-index: 2000;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 900px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 72px;
+        background: white;
+        padding: 25px;
+        flex-direction: column;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .benefit-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .slider {
+        height: 520px;
+    }
+
+    .slide h1 {
+        font-size: 40px;
+    }
+
+    .slide p {
+        font-size: 15px;
+    }
+
+    .slider-arrow {
+        width: 38px;
+        height: 38px;
+    }
+
+    .prev {
+        left: 12px;
+    }
+
+    .next {
+        right: 12px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .product-image {
+        height: 210px;
+    }
+
+    .product-info {
+        padding: 13px;
+    }
+
+    .promo-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .promo h2 {
+        font-size: 30px;
+    }
+
+    .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form button {
+        padding: 13px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header>
+
+<div class="container navbar">
+
+<a href="#" class="logo">
+    Nova.
+</a>
+
+<button class="menu-btn" id="menuBtn">
+    ☰
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#home">Home</a></li>
+<li><a href="#categories">Categories</a></li>
+<li><a href="#products">Shop</a></li>
+<li><a href="#offers">Offers</a></li>
+<li><a href="#about">About</a></li>
+
+</ul>
+
+<div class="nav-actions">
+
+<button class="icon-btn">
+    ♡
+</button>
+
+<button class="icon-btn">
+    🛒
+    <span class="cart-count" id="cartCount">0</span>
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+<main>
+
+
+<!-- =====================================
+     HERO SLIDER
+===================================== -->
+
+<section class="hero" id="home">
+
+<div class="slider" id="slider">
+
+
+<!-- SLIDE 1 -->
+
+<div class="slide active">
+
+<div class="slide-bg">
+<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85">
+</div>
+
+<div class="container slide-content">
+
+<div class="slide-content-inner">
+
+<span class="slide-label">
+NEW COLLECTION
+</span>
+
+<h1>
+Discover Your
+Next Favorite.
+</h1>
+
+<p>
+Explore our newest collection of premium fashion,
+lifestyle products and everyday essentials.
+</p>
+
+<a href="#products" class="hero-btn">
+Shop Now →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SLIDE 2 -->
+
+<div class="slide">
+
+<div class="slide-bg">
+
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85">
+
+</div>
+
+<div class="container slide-content">
+
+<div class="slide-content-inner">
+
+<span class="slide-label">
+SUMMER SALE
+</span>
+
+<h1>
+Up To 50%
+Off.
+</h1>
+
+<p>
+Limited-time deals on selected products.
+Grab your favorites before they're gone.
+</p>
+
+<a href="#offers" class="hero-btn">
+View Offers →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SLIDE 3 -->
+
+<div class="slide">
+
+<div class="slide-bg">
+
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85">
+
+</div>
+
+<div class="container slide-content">
+
+<div class="slide-content-inner">
+
+<span class="slide-label">
+TRENDING NOW
+</span>
+
+<h1>
+Style That
+Moves With You.
+</h1>
+
+<p>
+Fresh designs, premium materials and timeless
+styles made for modern life.
+</p>
+
+<a href="#products" class="hero-btn">
+Explore Collection →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<button class="slider-arrow prev" id="prev">
+‹
+</button>
+
+<button class="slider-arrow next" id="next">
+›
+</button>
+
+
+<div class="slider-dots" id="dots"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     CATEGORIES
+===================================== -->
+
+<section id="categories">
+
+<div class="container">
+
+<div class="section-heading">
+
+<h2>
+Shop By Category
+</h2>
+
+<p>
+Find exactly what you're looking for.
+</p>
+
+</div>
+
+
+<div class="category-slider">
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=500&q=80">
+<span>Fashion</span>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80">
+<span>Lifestyle</span>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80">
+<span>Sneakers</span>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80">
+<span>Watches</span>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=500&q=80">
+<span>Accessories</span>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80">
+<span>Electronics</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     PRODUCTS
+===================================== -->
+
+<section id="products">
+
+<div class="container">
+
+<div class="section-heading">
+
+<h2>
+Featured Products
+</h2>
+
+<p>
+Our most popular products this week.
+</p>
+
+</div>
+
+
+<div class="products-grid">
+
+
+<!-- PRODUCT -->
+
+<div class="product-card">
+
+<div class="product-image">
+
+<span class="sale">
+SALE
+</span>
+
+<button class="wishlist">
+♡
+</button>
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">
+Sneakers
+</span>
+
+<h3>
+Classic Red Sneakers
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+
+<span class="current-price">
+$79
+</span>
+
+<span class="old-price">
+$99
+</span>
+
+</div>
+
+<button class="add-cart">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT -->
+
+<div class="product-card">
+
+<div class="product-image">
+
+<button class="wishlist">
+♡
+</button>
+
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">
+Watches
+</span>
+
+<h3>
+Minimal Classic Watch
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+
+<span class="current-price">
+$129
+</span>
+
+</div>
+
+<button class="add-cart">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT -->
+
+<div class="product-card">
+
+<div class="product-image">
+
+<span class="sale">
+-30%
+</span>
+
+<button class="wishlist">
+♡
+</button>
+
+<img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=700&q=80">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">
+Bags
+</span>
+
+<h3>
+Premium Leather Bag
+</h3>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<div class="price">
+
+<span class="current-price">
+$89
+</span>
+
+<span class="old-price">
+$129
+</span>
+
+</div>
+
+<button class="add-cart">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT -->
+
+<div class="product-card">
+
+<div class="product-image">
+
+<button class="wishlist">
+♡
+</button>
+
+<img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80">
+
+</div>
+
+<div class="product-info">
+
+<span class="product-category">
+Home
+</span>
+
+<h3>
+Modern Chair
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+
+<span class="current-price">
+$199
+</span>
+
+</div>
+
+<button class="add-cart">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     PROMO
+===================================== -->
+
+<section class="promo" id="offers">
+
+<div class="container promo-content">
+
+<div>
+
+<h2>
+Summer Sale — 50% Off
+</h2>
+
+<p>
+Use code <strong>SUMMER50</strong> at checkout.
+</p>
+
+</div>
+
+<a href="#products" class="promo-btn">
+Shop Sale →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     SHOWCASE
+===================================== -->
+
+<section class="showcase">
+
+<div class="container">
+
+<div class="section-heading">
+
+<h2>
+Made For Your Lifestyle
+</h2>
+
+<p>
+Discover collections designed around you.
+</p>
+
+</div>
+
+
+<div class="showcase-grid">
+
+
+<div class="showcase-card">
+
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=80">
+
+<div class="showcase-content">
+
+<h3>
+Everyday Fashion
+</h3>
+
+<p>
+Simple. Comfortable. Stylish.
+</p>
+
+<a href="#products">
+Explore Collection →
+</a>
+
+</div>
+
+</div>
+
+
+<div class="showcase-card">
+
+<img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1000&q=80">
+
+<div class="showcase-content">
+
+<h3>
+Modern Living
+</h3>
+
+<p>
+Upgrade your everyday space.
+</p>
+
+<a href="#products">
+Shop Home →
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     BENEFITS
+===================================== -->
+
+<section class="benefits">
+
+<div class="container">
+
+<div class="benefit-grid">
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+🚚
+</div>
+
+<h3>
+Free Shipping
+</h3>
+
+<p>
+Free shipping on orders over $75.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+↩
+</div>
+
+<h3>
+Easy Returns
+</h3>
+
+<p>
+30-day hassle-free returns.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+🔒
+</div>
+
+<h3>
+Secure Payment
+</h3>
+
+<p>
+Your payment information is protected.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+💬
+</div>
+
+<h3>
+24/7 Support
+</h3>
+
+<p>
+We're here whenever you need us.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     NEWSLETTER
+===================================== -->
+
+<section class="newsletter">
+
+<div class="container">
+
+<h2>
+Stay In The Loop
+</h2>
+
+<p>
+Subscribe for new arrivals, exclusive offers and discounts.
+</p>
+
+<form class="newsletter-form" id="newsletterForm">
+
+<input
+type="email"
+placeholder="Enter your email"
+required
+>
+
+<button type="submit">
+Subscribe
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer id="about">
+
+<div class="container">
+
+<div class="footer-grid">
+
+
+<div class="footer-brand">
+
+<h3>
+Nova.
+</h3>
+
+<p>
+A modern online store bringing together fashion,
+lifestyle and everyday essentials.
+</p>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>
+Shop
+</h4>
+
+<ul>
+
+<li>
+<a href="#products">New Arrivals</a>
+</li>
+
+<li>
+<a href="#products">Best Sellers</a>
+</li>
+
+<li>
+<a href="#offers">Sale</a>
+</li>
+
+<li>
+<a href="#categories">Categories</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>
+Help
+</h4>
+
+<ul>
+
+<li>
+<a href="#">Contact Us</a>
+</li>
+
+<li>
+<a href="#">Shipping</a>
+</li>
+
+<li>
+<a href="#">Returns</a>
+</li>
+
+<li>
+<a href="#">FAQ</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>
+Follow
+</h4>
+
+<ul>
+
+<li>
+<a href="#">Instagram</a>
+</li>
+
+<li>
+<a href="#">Facebook</a>
+</li>
+
+<li>
+<a href="#">TikTok</a>
+</li>
+
+<li>
+<a href="#">Pinterest</a>
+</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+© <span id="year"></span> Nova. All rights reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+Added to cart ✓
+</div>
+
+
+<script>
+
+/* =====================================
+   MOBILE MENU
+===================================== */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("active");
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
+
+    });
+
+});
+
+
+/* =====================================
+   HERO SLIDER
+===================================== */
+
+const slides = document.querySelectorAll(".slide");
+const dotsContainer = document.getElementById("dots");
+
+let currentSlide = 0;
+
+
+/* create dots */
+
+slides.forEach((_, index) => {
+
+    const dot = document.createElement("button");
+
+    dot.className = "dot";
+
+    if (index === 0) {
+        dot.classList.add("active");
+    }
+
+    dot.addEventListener("click", () => {
+
+        goToSlide(index);
+
+    });
+
+    dotsContainer.appendChild(dot);
+
+});
+
+
+const dots = document.querySelectorAll(".dot");
+
+
+function goToSlide(index) {
+
+    slides[currentSlide].classList.remove("active");
+    dots[currentSlide].classList.remove("active");
+
+    currentSlide = index;
+
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
+
+}
+
+
+/* next */
+
+document.getElementById("next").addEventListener("click", () => {
+
+    let nextSlide = currentSlide + 1;
+
+    if (nextSlide >= slides.length) {
+        nextSlide = 0;
+    }
+
+    goToSlide(nextSlide);
+
+});
+
+
+/* previous */
+
+document.getElementById("prev").addEventListener("click", () => {
+
+    let previousSlide = currentSlide - 1;
+
+    if (previousSlide < 0) {
+        previousSlide = slides.length - 1;
+    }
+
+    goToSlide(previousSlide);
+
+});
+
+
+/* automatic slider */
+
+setInterval(() => {
+
+    let nextSlide = currentSlide + 1;
+
+    if (nextSlide >= slides.length) {
+        nextSlide = 0;
+    }
+
+    goToSlide(nextSlide);
+
+}, 5000);
+
+
+/* =====================================
+   CART
+===================================== */
+
+let cartCount = 0;
+
+const cartCounter = document.getElementById("cartCount");
+const toast = document.getElementById("toast");
+
+document.querySelectorAll(".add-cart").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        cartCount++;
+
+        cartCounter.textContent = cartCount;
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 1800);
+
+    });
+
+});
+
+
+/* =====================================
+   WISHLIST
+===================================== */
+
+document.querySelectorAll(".wishlist").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        if (button.textContent.trim() === "♡") {
+
+            button.textContent = "♥";
+            button.style.color = "#ef4444";
+
+        } else {
+
+            button.textContent = "♡";
+            button.style.color = "";
+
+        }
+
+    });
+
+});
+
+
+/* =====================================
+   NEWSLETTER
+===================================== */
+
+const newsletterForm =
+document.getElementById("newsletterForm");
+
+newsletterForm.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    const input =
+    newsletterForm.querySelector
